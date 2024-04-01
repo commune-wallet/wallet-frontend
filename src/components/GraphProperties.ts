@@ -4,7 +4,7 @@ export const options: ApexOptions = {
   stroke: {
     curve: "smooth", // or 'straight'
     width: 2,
-    colors: ["#18f135"], // Change the color of the graph line
+    colors: ["#0ea5e9"], // Change the color of the graph line
   },
   chart: {
     id: "trades",
@@ -16,9 +16,9 @@ export const options: ApexOptions = {
     zoom: {
       enabled: false,
     },
-    background: "transparent", // Set background to transparent
+    background: "transparent", 
     dropShadow: {
-      enabled: false, // Disable drop shadow
+      enabled: false, 
     },
   },
   legend: {
@@ -58,7 +58,7 @@ export const options: ApexOptions = {
   },
   fill: {
     type: "gradient",
-    colors: ["#99EA92", "#99EA92", "transparent", "transparent", "transparent"],
+    colors: ["#0ea5e9", "#0ea5e9", "transparent", "transparent", "transparent"],
     gradient: {
       shadeIntensity: 1,
       opacityFrom: 0.7,

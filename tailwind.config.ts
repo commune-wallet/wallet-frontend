@@ -1,28 +1,28 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
     container: {
       center: true,
-      padding: "2rem"
+      padding: "2rem",
     },
     extend: {
       screens: {
-        '2xl': '1360px',
-        'xs': '340px'
+        "2xl": "1360px",
+        xs: "340px",
       },
       colors: {
-        "primary-green": "#99EA92",
-        "strong-green": "#0EB400",
-        "main-bg": "#F1F1F1",
+        "primary-green": "#0ea5e9",
+        "strong-green": "#0e99e9",
+        "main-bg": "#0d1225",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -81,10 +81,13 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('flowbite/plugin')({
-    charts: true,
-  })],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("flowbite/plugin")({
+      charts: true,
+    }),
+  ],
   important: true,
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
