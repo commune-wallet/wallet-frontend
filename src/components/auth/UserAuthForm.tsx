@@ -104,7 +104,7 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ ...props }) => {
       </form>
       <div className="relative my-5">
         <div
-          className="
+          className=" 
                 absolute 
                 inset-0 
                 flex 
@@ -114,20 +114,20 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ ...props }) => {
           <div className="w-full border-t border-gray-300" />
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="bg-main-bg px-2 text-gray-500">
+          <span className="bg-main-bg px-2 text-stone-100">
             Or continue with
           </span>
         </div>
       </div>
       <Social />
-      <p className="text-center my-5">
+      <p className="text-center my-5 !  text-stone-300">
         Don&apos;t have an account?{" "}
-        <Link href={"/register"} className="text-[#48AC40] font-semibold">
+        <Link href={"/register"} className="text-primary-green font-semibold">
           Register
         </Link>
       </p>
       <Icons.auth.faceid className="mx-auto" />
-      <p className="text-center text-[0.5rem] mt-2">Face ID</p>
+      <p className="text-center text-[0.5rem] mt-2 text-stone-300">Face ID</p>
     </div>
   );
 };
