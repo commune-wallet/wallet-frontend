@@ -14,8 +14,8 @@ const page = () => {
             height={50}
             className="w-[150px] h-[150px]"
           />
-          <p className="text-4xl font-semibold tracking-tight mt-[50px]">Welcome</p>
-          <p className="text-xl max-w text-stone-600">Login to start.</p>
+          <p className="text-4xl font-semibold tracking-tight mt-[50px] text-white">Welcome</p>
+          <p className="text-xl max-w text-stone-300">Login to start.</p>
           <UserAuthForm />
         </div>
       </MaxWidthWrapper>

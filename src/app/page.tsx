@@ -82,8 +82,8 @@ export default function Home() {
             <Confetti active={confetti} config={confettiConfig} />
           </div>
           <span>
-            <h3 className="text-xl my-2 text-neutral-500">Current balance</h3>
-            <Paragraph size={"lg"} className="flex items-center text-black">
+            <h3 className="text-xl my-2 text-neutral-200">Current balance</h3>
+            <Paragraph size={"lg"} className="flex items-center text-stone-200">
               $5718.76
               <span className="text-sm sm:text-base text-strong-green ml-2">
                 +7%
@@ -92,7 +92,7 @@ export default function Home() {
           </span>
         </MaxWidthWrapper>
         <MaxWidthWrapper className="px-0 md:px-5">
-          <div className="mt-10 mb-8 w-full flex flex-col items-center bg-gradient-to-b from-white from-5% to-main-bg p-5 h-full rounded-t-[50px]">
+          <div className="mt-10 mb-8 w-full flex flex-col items-center bg-gradient-to-b from-stone from-5% to-main-bg p-5 h-full rounded-t-[50px]">
             <div className="w-full">
               <Graph
                 type={"area"}
@@ -112,7 +112,7 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </div>
-      <div className="absolute flex px-5 md:px-10 gap-5 items-center bg-gray-100 bottom-0 left-0 w-full h-12"></div>
+      <div className="absolute flex px-5 md:px-10 gap-5 items-center bg-main-bg bottom-0 left-0 w-full h-12"></div>
     </main>
   );
 }

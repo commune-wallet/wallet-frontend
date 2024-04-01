@@ -34,7 +34,7 @@ const Header: FC<HeaderProps> = ({}) => {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div>
-          <p className="text-base text-stone-500">Hi 👋🏼</p>
+          <p className="text-base text-stone-200">Hi 👋🏼</p>
           <h3 className="text-2xl text-neutral-600 font-medium">{username}</h3>
         </div>
       </div>

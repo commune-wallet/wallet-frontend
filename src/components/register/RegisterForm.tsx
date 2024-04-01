@@ -106,10 +106,16 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
                     className="w-full h-full"
                   />
                 ) : (
-                  <Icons.avatar className="h-full w-full" />
+                  <Image
+                    alt="profile image"
+                    src="/avatar.png"
+                    height={500}
+                    width={500}
+                    className="w-full h-full rounded-full"
+                  />
                 )}
               </div>
-              <span className="text-stone-600">Upload profile picture</span>
+              <span className="text-stone-300">Upload profile picture</span>
             </Label>
           </div>
           <div className="w-full">
@@ -159,15 +165,16 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
               </p>
             )}
           </div>
-          <p className="text-gray-500 text-sm text-start font-sans">
-            Password has to contain <span className="text-[#48AC40]">@$</span>
+          <p className="text-stone-200 text-sm text-start font-sans">
+            Password has to contain{" "}
+            <span className="text-primary-green">@$</span>
           </p>
           <div className="flex gap-1 items-center">
             <Checkbox
-              className="border-[#5bc051] data-[state=checked]:bg-transparent data-[state=checked]:text-[#5bc051]"
+              className="border-primary-green data-[state=checked]:bg-transparent data-[state=checked]:text-[#5bc051]"
               onClick={() => setIsChecked(!isChecked)}
             />
-            <p className="text-black text-sm text-start font-sans">
+            <p className="text-stone-200 text-sm text-start font-sans">
               I agree to privacy policy and terms of service
             </p>
           </div>
@@ -200,9 +207,9 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
         </div>
       </div>
       <Social />
-      <p className="text-center mt-5">
+      <p className="text-center mt-5 text-stone-300">
         Already have account{" "}
-        <Link href={"/login"} className="text-[#48AC40] font-semibold">
+        <Link href={"/login"} className="text-primary-green font-semibold">
           Login?
         </Link>
       </p>

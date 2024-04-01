@@ -34,7 +34,7 @@ const Graph = ({
         {(["1H", "1D", "1W", "1M", "1Y"] as const).map((e, i) => (
           <span
             className={cn(
-              "text-stone-600 text-xs sm:text-sm px-4 sm:px-5 py-1",
+              "text-stone-700 font-[600] text-xs sm:text-sm px-4 sm:px-5 py-1",
               {
                 "bg-primary-green rounded-full": active === i,
               }
