@@ -3,7 +3,7 @@
 import { FC, InputHTMLAttributes, useState } from "react";
 import { RegisterSchemaType } from "@/lib/validators/auth";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { FaRegEyeSlash, FaEye } from "react-icons/fa";
+import { RiEyeCloseFill, RiEyeFill  } from "react-icons/ri";
 import { cn } from "@/lib/utils";
 
 interface PasswrodInputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -35,13 +35,13 @@ const PasswrodInput: FC<PasswrodInputProps> = ({
         type={visible ? "text" : "password"}
       />
       {visible ? (
-        <FaEye
+        <RiEyeFill
           className="text-primary-green px-3"
           size={45}
           onClick={() => setVisible(false)}
         />
       ) : (
-        <FaRegEyeSlash
+        <RiEyeCloseFill
           className="text-primary-green px-3"
           size={45}
           onClick={() => setVisible(true)}
