@@ -55,22 +55,22 @@ const Currencies: FC<CurrenciesProps> = ({ price, balance }) => {
   };
 
   return (
-    <div className="w-full grid grid-cols-1  gap-1 h-full">
+    <div className="w-full grid grid-cols-1 gap-1 h-full">
       {currencies.map((currency, i) => (
         <div
           key={i}
-          className="flex transition-colors duration-300 hover:bg-stone-150 cursor-pointer border hover:border-slate-200 bg-white p-5 rounded-3xl items-center justify-between"
+          className="flex transition-colors duration-300 hover:bg-[#1e243d] cursor-pointer border-[1px] border-[#787878] hover:border-slate-200 bg-main-bg p-5 rounded-3xl items-center justify-between"
           onClick={() => handleCurrencyClick(currency.title)}
         >
           <div className="flex gap-3 items-center">
             <currency.icon />
             <div>
-              <p className="uppercase font-semibold text-lg">{currency.abbr}</p>
+              <p className="uppercase font-semibold text-lg text-stone-200">{currency.abbr}</p>
               <p className="text-stone-400">{currency.title}</p>
             </div>
           </div>
           <div>
-            <p className="uppercase font-semibold text-lg text-right">
+            <p className="uppercase font-semibold text-lg text-right text-stone-200">
               {balance[currency.title.toLowerCase()]
                 .toLocaleString()
                 .substring(0, 8)}

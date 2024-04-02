@@ -24,7 +24,7 @@ const Category = () => {
       {activities.map((activity, i) => (
         <div
           key={i}
-          className={"text-neutral-500 text-base sm:text-xl pr-2 sm:pr-4 py-1"}
+          className={"text-neutral-300 text-base sm:text-xl pr-2 sm:pr-4 py-1"}
           onClick={() => handleSetFilter(activity.toLowerCase())}
         >
           <span
