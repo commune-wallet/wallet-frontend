@@ -64,8 +64,8 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ ...props }) => {
         <div className="grid gap-2">
           <div className="">
             <div className="w-full flex items-start">
-              <div className="h-12 flex bg-stone-200 items-center rounded-2xl rounded-r-none">
-                <p className="mx-2">@</p>
+              <div className="h-12 flex bg-main-bg border border-input border-r-0 items-center rounded-2xl rounded-r-none">
+                <p className="mx-2 text-stone-200">@</p>
               </div>
               <Input
                 {...register("username")}
