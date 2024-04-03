@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 // @ts-ignore
 import { Avalanche } from "avalanche";
-import { evmTxType } from "../evms/txType.ts";
+import { evmTxType } from "../evms/txType";
 
 const nodeURL = "https://api.avax-test.network/ext/bc/C/rpc";
 const HTTPSProvider = new ethers.JsonRpcProvider(nodeURL);
