@@ -205,7 +205,6 @@ export default function Home() {
             user?.username
           }
         />
-        {/* <BillModal currency={currency} /> */}
       </div>
     </main>
   );
