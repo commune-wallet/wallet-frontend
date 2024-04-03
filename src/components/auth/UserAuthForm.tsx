@@ -122,10 +122,11 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ ...props }) => {
           <div className="">
             <Input
               {...register("password")}
-              className={cn("h-12 text-base rounded-l-none", {
+              type="password"
+              className={cn("h-12 text-base", {
                 "focus-visible:ring-red-500": errors.username,
               })}
-              placeholder="Username"
+              placeholder="Password"
             />
             {errors?.password && (
               <p className="text-sm mt-1 font-sans text-start text-red-500">
