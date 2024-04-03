@@ -36,7 +36,11 @@ export function middleware(req: NextRequest) {
     user = "user" in cookies ? cookies.user : "";
   }
 
-  return NextResponse.next();
+  if (!user) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  } else {
+    return NextResponse.next();
+  }
 }
 
 export const config = {

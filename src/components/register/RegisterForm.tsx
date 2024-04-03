@@ -17,6 +17,8 @@ import PasswrodInput from "./PasswrodInput";
 import { Checkbox } from "../ui/checkbox";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { createAccount } from "../../lib/addressUtils/userAccount";
+import { pinFileToIPFS } from "../../lib/pinata/uploader";
 import Cookies from "js-cookie";
 
 interface RegisterFormProps {}
@@ -71,13 +73,98 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
 
   const onSubmit = async (data: RegisterSchemaType) => {
     setIsLoading(true);
-    setTimeout(() => {
+    if (!selectedImage) {
+      toast.error("Upload profile picture");
       setIsLoading(false);
-    }, 200);
+      return;
+    }
 
-    toast.success("Log in successful");
-    router.push("/login");
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_BACKEND_API_URL + "/checkExistUser",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: "@" + data.username }),
+      }
+    );
+
+    if (!response.ok) {
+      throw response;
+    }
+    const responseData = await response.json();
+    if (responseData.existUser) {
+      toast.error("Username already exists");
+      setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(true);
+
+    const account = createAccount(data.password);
+
+    var formData: { [key: string]: any } = {
+      username: "@" + data.username,
+      password: data.password,
+      rootSeed: account.forBackend.encryptedSeed,
+      salt: account.forBackend.salt,
+      address: {
+        bitcoin: account.forBackend.bitcoinAdd,
+        solana: account.forBackend.solanaAdd,
+        ethereum: account.forBackend.ethAdd,
+        avalanche: account.forBackend.avalancheAdd,
+        bsc: account.forBackend.bscAdd,
+      },
+    };
+
+    const imgRes = await fetch(selectedImage as string);
+    const blob = await imgRes.blob();
+    const imageFile = new File([blob], "image.png", { type: blob.type });
+    const imageLink = await pinFileToIPFS(imageFile);
+
+    formData["profileImage"] = imageLink;
+
+    await fetch(process.env.NEXT_PUBLIC_BACKEND_API_URL as string, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw response;
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Set cookies
+        Cookies.set(
+          "user",
+          JSON.stringify({
+            username: data.username,
+            profileImage: data.profileImage,
+            address: data.address,
+            encryptedSeed: account.forFrontend.encryptedSeed,
+            salt: account.forFrontend.salt,
+            iv: account.forFrontend.iv,
+          }),
+          { expires: 1 }
+        );
+        Cookies.set("welcome", JSON.stringify(true));
+
+        toast.success("Sign up successful");
+        router.push("/");
+      })
+      .catch((err) => {
+        err.json().then((errm: { message: string }) => {
+          setIsLoading(false);
+          toast.error(errm.message);
+        });
+      });
   };
+
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit(onSubmit)} className="w-auto">

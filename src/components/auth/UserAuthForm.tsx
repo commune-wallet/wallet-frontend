@@ -16,6 +16,8 @@ import PasswrodInput from "../register/PasswrodInput";
 import { Icons } from "../Icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { afterLogin } from "../../lib/addressUtils/userAccount";
+import Cookies from "js-cookie";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -46,16 +48,51 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ ...props }) => {
       setIsLoading(false);
     }
   };
-
   const onSubmit = async (data: LoginSchemaType) => {
     setIsLoading(true);
 
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 200);
+    data.username = "@" + data.username;
+    const password = data.password;
 
-    toast.success("Log in successful");
-    router.push("/");
+    await fetch(process.env.NEXT_PUBLIC_BACKEND_API_URL + "/auth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw response;
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const account = afterLogin(data.rootSeed, data.salt, password);
+        console.log(account);
+        // Set cookies
+        Cookies.set(
+          "user",
+          JSON.stringify({
+            username: data.username,
+            profileImage: data.profileImage,
+            address: data.address,
+            encryptedSeed: account.encryptedSeed,
+            salt: account.salt,
+            iv: account.iv,
+          }),
+          { expires: 1 }
+        );
+
+        toast.success("Log in successful");
+        router.push("/");
+      })
+      .catch((err) => {
+        err.json().then((errm: { message: string }) => {
+          setIsLoading(false);
+          toast.error(errm.message);
+        });
+      });
   };
 
   return (
