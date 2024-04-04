@@ -1,6 +1,3 @@
-const JWT =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJmOTFiYzM1MS1lNmJhLTRjNGUtYTM3ZC1mOTcyYzc5OTA5M2UiLCJlbWFpbCI6InJhbW9zbGlsYTgxN0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6IkZSQTEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX0seyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiZDdiNWI4YTM5YWQ4ZGFlYjFlNmMiLCJzY29wZWRLZXlTZWNyZXQiOiI4NDc4YTcxOGQzNWE2YzYxNDA4NGM0NjhiNGZmYjMzZWU4NTBlODIwZTE4Y2VmZGNmMTQwN2FkYzJlMmUxMWM5IiwiaWF0IjoxNzA5MDA3MzI0fQ.7KjjYTbS6zyhWbDblyDlxIota3McatMgsrPFAv6ejGQ";
-
 export const pinFileToIPFS = async (file: File) => {
   const formData = new FormData();
   formData.append("file", file);
@@ -15,7 +12,7 @@ export const pinFileToIPFS = async (file: File) => {
       method: "POST",
       body: formData,
       headers: {
-        Authorization: `Bearer ${JWT}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_PINATA_API_TOKEN}`,
       },
     });
 

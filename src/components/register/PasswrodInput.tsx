@@ -22,7 +22,7 @@ const PasswrodInput: FC<PasswrodInputProps> = ({
   return (
     <div
       className={cn(
-        "h-12 text-base flex bg-white transition-all duration-300 rounded-2xl items-center",
+        "h-12 text-base flex bg-main-bg transition-all border border-input duration-300 rounded-2xl items-center",
         {
           "ring-red-500": errors[label],
         }
@@ -30,7 +30,7 @@ const PasswrodInput: FC<PasswrodInputProps> = ({
     >
       <input
         {...props}
-        className="rounded-l-2xl bg-transparent w-full h-full px-5 py-2 flex border-0 focus:ring-0 focus:outline-0"
+        className="rounded-l-2xl bg-transparent w-full h-full text-stone-200 px-5 py-2 flex border-0 focus:ring-0 focus:outline-0 placeholder:text-stone-300"
         {...register(label)}
         type={visible ? "text" : "password"}
       />

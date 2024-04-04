@@ -35,15 +35,15 @@ const Header: FC<HeaderProps> = ({}) => {
         </Avatar>
         <div>
           <p className="text-base text-stone-200">Hi 👋🏼</p>
-          <h3 className="text-2xl text-neutral-600 font-medium">{username}</h3>
+          <h3 className="text-2xl text-neutral-200 font-medium">{username}</h3>
         </div>
       </div>
       <div
         title="Log out"
-        className="h-12 w-12 bg-white rounded-full flex items-center justify-center cursor-pointer"
+        className="h-12 w-12 bg-main-bg border-[1px] border-[#e5e5e5] rounded-full flex items-center justify-center cursor-pointer"
         onClick={onLogout}
       >
-        <FaSignOutAlt color="#5D5D5D" size={25} />
+        <FaSignOutAlt color="#e5e5e5" size={25} />
       </div>
     </div>
   );

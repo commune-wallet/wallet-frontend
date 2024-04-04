@@ -92,7 +92,7 @@ export default function Home() {
           </span>
         </MaxWidthWrapper>
         <MaxWidthWrapper className="px-0 md:px-5">
-          <div className="mt-10 mb-8 w-full flex flex-col items-center bg-gradient-to-b from-stone from-5% to-main-bg p-5 h-full rounded-t-[50px]">
+          <div className="mt-10 mb-8 w-full flex flex-col items-center bg-gradient-to-b from-white/10 from-5% to-main-bg p-5 h-full rounded-t-[50px]">
             <div className="w-full">
               <Graph
                 type={"area"}
