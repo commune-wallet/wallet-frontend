@@ -73,11 +73,6 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
 
   const onSubmit = async (data: RegisterSchemaType) => {
     setIsLoading(true);
-    if (!selectedImage) {
-      toast.error("Upload profile picture");
-      setIsLoading(false);
-      return;
-    }
 
     const response = await fetch(
       process.env.NEXT_PUBLIC_BACKEND_API_URL + "/checkExistUser",
